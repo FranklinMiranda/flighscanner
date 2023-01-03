@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// API endpoint URL https://restcountries.com/v3.1/all
+// API endpoint URL
+const BASE_URL = 'https://restcountries.com/v3.1/all';
 
-const Data = () => {
-  const [data, setData] = useState([]);
+function ListCountries() {
+  const [countries, setCountries] = useState([]);
 
   useEffect(() => {
     const loadData = async () => {
-      const response = await axios.get('https://restcountries.com/v3.1/all');
-      console.log(response);
+      const response = await axios.get(BASE_URL);
 
-      setData(response.data);
+      console.log(response.data);
+
+      setCountries(response.data);
     };
 
     loadData();
-  });
+  }, []);
 
   return (
-    <div className="Data">
-      {data.map((item) => (
-        <h4>{item.title}</h4>
-      ))}
+    <div>
+      {countries.map((item) => {
+        return <h1>{item.name.common}</h1>;
+      })}
     </div>
   );
-};
+}
 
-export default Data;
+export default ListCountries;
