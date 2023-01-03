@@ -8,18 +8,22 @@ const Data = () => {
 
   useEffect(() => {
     const loadData = async () => {
-
       const response = await axios.get('https://restcountries.com/v3.1/all');
-        console.log(response)
-      //setData(response.data);
+      console.log(response);
 
+      setData(response.data);
     };
 
     loadData();
   });
 
-  return <div className="Data">{data.map((item) => <h4>{item.title}</h4>)}</div>;
+  return (
+    <div className="Data">
+      {data.map((item) => (
+        <h4>{item.title}</h4>
+      ))}
+    </div>
+  );
 };
 
-export default Data
-
+export default Data;

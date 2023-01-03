@@ -6,7 +6,7 @@ const App = () => {
     <div className="App">
       <h1> App </h1>
       <Data/>
-    </div>
+=    </div>
   );
 };
 
