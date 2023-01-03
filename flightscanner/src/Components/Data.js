@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// API endpoint URL https://jsonplaceholder.typicode.com/posts/
+// API endpoint URL https://restcountries.com/v3.1/all
 
 const Data = () => {
   const [data, setData] = useState([]);
@@ -9,7 +9,7 @@ const Data = () => {
   useEffect(() => {
     const loadData = async () => {
 
-      const response = await axios.get('https://the-cocktail-db.p.rapidapi.com/search.php');
+      const response = await axios.get('https://restcountries.com/v3.1/all');
         console.log(response)
       //setData(response.data);
 
