@@ -1,32 +1,27 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 
-// API endpoint URL : https://skyscanner44.p.rapidapi.com/autocomplete
+// API endpoint URL https://jsonplaceholder.typicode.com/posts/
 
 const Data = () => {
-    const [loading, setLoading] = useState(false)
-    const [data, setData] = useState([])
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
 
-    useEffect(() => {
-        const loadData = async () => {
-            setLoading(true);
+  useEffect(() => {
+    const loadData = async () => {
+      setLoading(true);
 
-            const response = await Axios.get('https://skyscanner44.p.rapidapi.com/autocomplete')
+      const response = await Axios.get('https://jsonplaceholder.typicode.com/posts/');
 
-            setData(response.data)
+      setData(response.data);
 
-            setLoading(false)
-        }
+      setLoading(true);
+    };
 
-        loadData()
-    }, [])
+    loadData();
+  }, []);
 
-    return (
-        <div className='Data'>
-            {loading ? <h4>Loading...</h4> : console.log(data)}
-        </div>
-    )
-
-}
+  return <div className="Data">{loading ? <h4>Loading...</h4> : data.map((item) => <h4>{item.title}</h4>)}</div>;
+};
 
 export default Data
